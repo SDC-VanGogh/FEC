@@ -11,7 +11,7 @@ import axios from "axios";
 export function getFromApi(route, params, callback) {
   return new Promise((resolve, reject) => {
     axios
-      .get(`http://localhost:3000/hr-rfp/${route}`, { params })
+      .get(`http://localhost:8080/api/${route}`, { params })
       .then((res) => {
         resolve(res.data)
       })
@@ -42,7 +42,7 @@ export function getRatings(product_id) {
 export function postToApi(queryOptions, callback) {
   queryOptions = {
     method: "post",
-    url: `http://localhost:3000/hr-rfp/`,
+    url: `http://localhost:8080/api/`,
     data: {
       product_id: 17069,
     },
