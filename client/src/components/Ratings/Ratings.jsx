@@ -10,7 +10,7 @@ const Ratings = (props) => {
   const [product, setProduct] = useContext(ProductContext);
 
   // component level state
-  const [sortBy, setSortBy] = useState('relevant')
+  const [sortBy, setSortBy] = useState('newest')
   const [ratings, setRatings] = useState({
     reviews: [],
     meta: {}
@@ -25,7 +25,9 @@ const Ratings = (props) => {
         count: 6,
         sort: sortBy
       }),
-      getFromApi(`reviews/meta?product_id=${product.product_id}`)
+      getFromApi(`reviews/meta`,{
+        product_id: product.product_id
+      })
     ])
     .then(ratingResults => {
       // store reviews in state

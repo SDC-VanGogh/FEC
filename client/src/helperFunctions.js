@@ -33,7 +33,7 @@ export function getStyles(product_id) {
 
 // represents reviews/meta?product_id=00000
 export function getRatings(product_id) {
-  return getFromApi(`reviews/meta?product_id=${product_id}`);
+  return getFromApi(`reviews/meta/?product_id=${product_id}`);
 }
 
 
