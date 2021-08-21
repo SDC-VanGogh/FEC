@@ -18,7 +18,7 @@ let App = () => {
 
   const [product, setProduct] = useState({
     // DO NOT APPROVE REVIEW IF THE product_id HAS NOT BEEN DISCUSSED
-    product_id: 17072,
+    product_id: 2,
     currentProduct: {},
     styles: [],
     ratings: []
@@ -27,16 +27,16 @@ let App = () => {
 
   useEffect(() => {
     Promise.all([
-      getProduct(product.product_id),
-      getStyles(product.product_id),
+      // getProduct(product.product_id),
+      // getStyles(product.product_id),
       getRatings(product.product_id)
     ])
     .then((productData) => {
       setProduct(prevState => ({
         ...prevState,
-        currentProduct: productData[0],
-        styles: productData[1].results,
-        ratings: productData[2].ratings
+        // currentProduct: productData[0],
+        // styles: productData[1].results,
+        ratings: productData[0].ratings
       }))
     })
   }, [product.product_id])
@@ -45,7 +45,7 @@ let App = () => {
   return (
     <ProductContext.Provider value={[product, setProduct]}>
       <NavBar />
-      <div id='overview'>
+      {/* <div id='overview'>
         <Overview
           currentStyle={currentStyle}
           setCurrentStyle={setCurrentStyle}/>
@@ -58,7 +58,7 @@ let App = () => {
         <QandA
           questionList={questionList} answerList={answerList}
         />
-      </div>
+      </div> */}
       <div className='widget' id='ratings'>
         <Ratings />
       </div>
